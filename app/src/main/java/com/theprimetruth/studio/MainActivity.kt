@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var cameraController: LifecycleCameraController
     private var recording: androidx.camera.video.Recording? = null
     private var selectedVideo: Uri? = null
-    private val mainExecutor: Executor by lazy { ContextCompat.getMainExecutor(this) }
+    private val cameraExecutor: Executor by lazy { ContextCompat.getMainExecutor(this) }
 
     private val videoPicker = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         if (uri != null) {
@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity() {
         val outputDir = getExternalFilesDir(Environment.DIRECTORY_MOVIES) ?: filesDir
         val outputFile = File(outputDir, "TPT_${System.currentTimeMillis()}.mp4")
         val options = FileOutputOptions.Builder(outputFile).build()
-        recording = cameraController.startRecording(options, AudioConfig.create(true), mainExecutor) { event ->
+        recording = cameraController.startRecording(options, AudioConfig.create(true), cameraExecutor) { event ->
             when (event) {
                 is VideoRecordEvent.Start -> {
                     binding.recordButton.text = "■ Stop"
