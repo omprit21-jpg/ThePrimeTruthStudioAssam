@@ -53,6 +53,12 @@
             android:textColor="#FFFFFF" android:textColorHint="#999999"
             android:backgroundTint="#D5A900"/>
     </LinearLayout>
+        <Button
+        android:id="@+id/editVideoButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="EDIT VIDEO"/>
     <Button android:id="@+id/exportButton" android:layout_width="match_parent"
         android:layout_height="wrap_content" android:layout_margin="8dp"
         android:text="EXPORT MP4 WITH AUTO LOGO + HEADLINE"/>
