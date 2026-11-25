@@ -2,6 +2,7 @@ package com.theprimetruth.studio
 
 import android.Manifest
 import android.content.ContentValues
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
@@ -69,6 +70,9 @@ class MainActivity : AppCompatActivity() {
         binding.importButton.setOnClickListener { videoPicker.launch("video/*") }
         binding.recordButton.setOnClickListener { toggleRecording() }
         binding.exportButton.setOnClickListener { exportWithWatermark() }
+        binding.editVideoButton.setOnClickListener {
+            startActivity(Intent(this, EditorActivity::class.java))
+        }
 
         val required = arrayOf(Manifest.permission.CAMERA, Manifest.permission.RECORD_AUDIO)
         if (required.all { ContextCompat.checkSelfPermission(this, it) == PackageManager.PERMISSION_GRANTED }) {
