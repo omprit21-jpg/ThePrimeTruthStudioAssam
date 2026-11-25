@@ -83,34 +83,37 @@ class VideoEditEngine {
         return true
     }
 
-    fun splitClip(
-        id: Long,
-        splitAtMs: Long
-    ): Boolean {
-        val index = clips.indexOfFirst { it.id == id }
-        if (index == -1) return false
+    
+fun splitClip(
+    id: Long,
+    splitAtMs: Long,
+    sourceDurationMs: Long? = null
+): Boolean {
+    val index = clips.indexOfFirst { it.id == id }
+    if (index == -1) return false
 
-        val original = clips[index]
-        val end = original.endMs ?: return false
+    val original = clips[index]
+    val end = original.endMs ?: sourceDurationMs ?: return false
 
-        if (splitAtMs <= original.startMs || splitAtMs >= end) {
-            return false
-        }
-
-        val firstPart = original.copy(
-            endMs = splitAtMs
-        )
-
-        val secondPart = original.copy(
-            id = System.nanoTime(),
-            startMs = splitAtMs
-        )
-
-        clips[index] = firstPart
-        clips.add(index + 1, secondPart)
-
-        return true
+    if (splitAtMs <= original.startMs || splitAtMs >= end) {
+        return false
     }
+
+    val firstPart = original.copy(
+        endMs = splitAtMs
+    )
+
+    val secondPart = original.copy(
+        id = System.nanoTime(),
+        startMs = splitAtMs,
+        endMs = end
+    )
+
+    clips[index] = firstPart
+    clips.add(index + 1, secondPart)
+
+    return true
+}
 
     fun moveClip(fromIndex: Int, toIndex: Int): Boolean {
         if (fromIndex !in clips.indices || toIndex !in clips.indices) {
