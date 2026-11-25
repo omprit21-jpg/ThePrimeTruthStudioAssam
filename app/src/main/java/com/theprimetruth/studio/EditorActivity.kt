@@ -478,7 +478,7 @@ class EditorActivity : AppCompatActivity() {
 
             val sequences = mutableListOf<EditedMediaItemSequence>()
             sequences.add(
-                EditedMediaItemSequence.withAudioAndVideoFrom(videoItems)
+                EditedMediaItemSequence(videoItems)
             )
 
             
