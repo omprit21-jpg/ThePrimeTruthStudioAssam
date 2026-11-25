@@ -1,0 +1,15 @@
+THE PRIME TRUTH STUDIO — CLOUD APK BUILD (NO ANDROID STUDIO)
+
+1. Create/sign in to GitHub at https://github.com.
+2. Create a new repository named ThePrimeTruthStudio.
+3. On the repository page choose Add file > Upload files.
+4. Upload the CONTENTS of this extracted folder (all files and folders), including the hidden .github/workflows/android-apk.yml. On Windows File Explorer, use View > Show > Hidden items to see .github.
+5. Commit to the main branch.
+6. Open the Actions tab and select "Build The Prime Truth Studio APK".
+7. Open the latest run and wait for a green check.
+8. Under Artifacts, download "The-Prime-Truth-Studio-debug-apk". Extract it to obtain app-debug.apk.
+9. Transfer app-debug.apk to the Samsung Galaxy A51. Open it in File Manager and follow Android's prompt to allow installation from that source, then tap Install.
+
+If the workflow fails, share the error log here so I can diagnose it. Do not share GitHub passwords or OTPs.
+
+STATUS: This corrected source package is prepared for a GitHub Actions build. I cannot claim an APK exists until the workflow completes successfully. The output is a debug APK for testing, not a Play Store release. Java and Kotlin compilation targets are both set to 17.

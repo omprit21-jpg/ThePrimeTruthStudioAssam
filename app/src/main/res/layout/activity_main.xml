@@ -1,0 +1,59 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:background="#090909"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <ImageView android:layout_width="match_parent" android:layout_height="76dp"
+        android:padding="7dp" android:scaleType="fitCenter"
+        android:src="@drawable/prime_truth_logo" android:contentDescription="The Prime Truth logo"/>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="MOBILE NEWSROOM  •  REAL &amp; RELIABLE" android:textColor="#E5C12B"
+        android:textStyle="bold" android:gravity="center" android:padding="5dp" android:textSize="12sp"/>
+    <FrameLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+        android:layout_marginHorizontal="9dp" android:layout_marginTop="5dp">
+        <androidx.camera.view.PreviewView android:id="@+id/cameraPreview"
+            android:layout_width="match_parent" android:layout_height="match_parent"/>
+        <ImageView android:id="@+id/previewLogo" android:layout_width="112dp" android:layout_height="58dp"
+            android:layout_gravity="top|end" android:layout_margin="12dp"
+            android:src="@drawable/prime_truth_square" android:scaleType="fitCenter"
+            android:contentDescription="Watermark preview"/>
+        <TextView android:id="@+id/statusText" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_gravity="bottom|center_horizontal"
+            android:layout_margin="12dp" android:padding="8dp" android:background="#99000000"
+            android:text="Ready to record or import a video" android:textColor="#FFFFFF"/>
+    </FrameLayout>
+    <LinearLayout android:orientation="horizontal" android:gravity="center" android:padding="4dp"
+        android:layout_width="match_parent" android:layout_height="wrap_content">
+        <Button android:id="@+id/recordButton" android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content" android:text="● Record"/>
+        <Button android:id="@+id/importButton" android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content" android:text="Import video"/>
+    </LinearLayout>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="NEWS HEADLINE (OPTIONAL)" android:textColor="#E5C12B"
+        android:textStyle="bold" android:textSize="11sp" android:paddingStart="12dp"/>
+    <EditText android:id="@+id/headlineInput" android:layout_width="match_parent"
+        android:layout_height="46dp" android:layout_marginHorizontal="10dp"
+        android:hint="Type headline in Assamese, Hindi or English"
+        android:textColor="#FFFFFF" android:textColorHint="#999999"
+        android:singleLine="true" android:paddingHorizontal="10dp"
+        android:backgroundTint="#D5A900"/>
+    <LinearLayout android:orientation="horizontal" android:gravity="center_vertical"
+        android:paddingHorizontal="10dp" android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText android:id="@+id/trimStartInput" android:layout_width="0dp"
+            android:layout_weight="1" android:layout_height="44dp"
+            android:hint="Start sec" android:inputType="numberDecimal"
+            android:textColor="#FFFFFF" android:textColorHint="#999999"
+            android:backgroundTint="#D5A900"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="  TRIM  " android:textColor="#E5C12B" android:textStyle="bold"/>
+        <EditText android:id="@+id/trimEndInput" android:layout_width="0dp"
+            android:layout_weight="1" android:layout_height="44dp"
+            android:hint="End sec (optional)" android:inputType="numberDecimal"
+            android:textColor="#FFFFFF" android:textColorHint="#999999"
+            android:backgroundTint="#D5A900"/>
+    </LinearLayout>
+    <Button android:id="@+id/exportButton" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:layout_margin="8dp"
+        android:text="EXPORT MP4 WITH AUTO LOGO + HEADLINE"/>
+</LinearLayout>

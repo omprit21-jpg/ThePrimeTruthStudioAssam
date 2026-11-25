@@ -1,0 +1,10 @@
+<resources>
+<style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <item name="colorPrimary">#D5A900</item>
+    <item name="colorPrimaryVariant">#9A7800</item>
+    <item name="colorSecondary">#D91E18</item>
+    <item name="android:statusBarColor">#090909</item>
+    <item name="android:navigationBarColor">#090909</item>
+    <item name="android:windowLightStatusBar">false</item>
+</style>
+</resources>
