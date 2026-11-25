@@ -1,34 +1,46 @@
-# The Prime Truth Studio — Android project (development build)
+# The Prime Truth Studio — Android project
 
-A native Android Studio project for The Prime Truth news portal.
+Native Android newsroom recording and video-editing app for The Prime Truth.
 
-## Included in this development build
-- Branded app screen using the uploaded official transparent PNG logo.
-- Camera recording through CameraX, with audio permission and device-dependent Full HD quality selection.
-- Import an existing video through the Android system video picker.
-- Permanent logo watermark baked into the exported MP4 using AndroidX Media3 Transformer.
-- Optional headline strip rendered into the exported video (headline input accepts Assamese, Hindi and English text supported by the phone font).
-- Basic trim-in / trim-out fields in seconds.
-- Exported MP4 copied to `Movies/ThePrimeTruthStudio`.
+## Recording Studio
+- CameraX video recording with microphone audio.
+- Portrait and landscape layouts.
+- Device-dependent Full HD recording selection.
+- Automatic recording file creation in the app's Movies folder.
+- Permanent square-logo watermark and optional headline export from the Recording Studio.
+- Import an existing video and open the Editing Studio.
 
-## Build and install
-1. Install Android Studio and Android SDK Platform 35.
-2. Open this project folder in Android Studio.
-3. Allow Gradle sync and dependency downloads.
-4. Connect an Android phone (USB debugging enabled) or use a suitable emulator.
-5. Run the `app` configuration to install the development build.
-6. To generate an APK, use **Build > Build Bundle(s) / APK(s) > Build APK(s)**.
+## Editing Studio (integrated)
+- Import multiple video clips in one picker operation.
+- Preview selected clips with playback and seek controls.
+- Visible horizontal clip timeline with clip selection.
+- Trim selected clips by start and end time in seconds.
+- Split selected clips at the preview playhead.
+- Remove clips and move clips earlier/later in the timeline.
+- Join clips in timeline order by exporting them as one composition.
+- Add a looping background-music track.
+- Record a voice-over in-app and include it as an audio track.
+- Apply the square Prime Truth logo and optional headline/lower-third to every video clip.
+- Export the complete timeline to MP4 and copy it to `Movies/ThePrimeTruthStudio`.
 
-The debug APK, if successfully built, will be generated at:
-`app/build/outputs/apk/debug/app-debug.apk`
+## Build
+The project uses Android Gradle Plugin 8.9.2, Kotlin 2.1.10, Java 17, compile SDK 35 and AndroidX Media3 1.6.1.
 
-## Important status
-This archive is Android source code, not a compiled or device-tested APK. The current environment does not have Android Studio / Android SDK / Gradle installed, so compilation and real-device validation have not been performed here. Please build and test before newsroom use.
+### GitHub Actions
+The included workflow `.github/workflows/android-apk.yml` builds a debug APK on pushes to `main` and on manual workflow dispatch. Download the artifact named `The-Prime-Truth-Studio-debug-apk` from the successful workflow run.
 
-## Still planned
-- Multi-clip timeline, split and join controls.
-- Background music import, voiceover recording and audio mixing.
-- More lower-third / Breaking News templates and editable reporter/location fields.
-- Front/rear camera switch and recording quality selector.
-- Watermark size, opacity and position controls.
-- Release signing and final installable APK.
+### Android Studio
+1. Open the project folder in Android Studio.
+2. Allow Gradle sync and dependency downloads.
+3. Build using **Build > Build Bundle(s) / APK(s) > Build APK(s)**.
+
+## Important validation notes
+- This ZIP is Android source code, not a prebuilt APK.
+- This environment does not have the Android SDK/Gradle toolchain installed, so a successful compilation and Galaxy A51 device test cannot be claimed here.
+- Media3 Composition supports sequential clip composition and additional audio sequences, but the source media must meet Media3's track/format requirements. Crossfades between tracks are not implemented in this version.
+- Recording resolution is device-dependent; the camera requests Full HD where supported.
+- Export can be slow and may fail for unsupported/corrupt source media or insufficient storage. Test with short MP4 clips first and retain original recordings.
+- This is a development build. Test exports before using the app for time-critical newsroom publication.
+
+## Current scope
+The editor now has functional timeline controls for import, trim, split, remove, reorder, background music, voice-over, headline/logo overlays and composition export. Dedicated transition effects, animated title templates, keyframe animation, adjustable watermark placement/opacity, and independent audio gain/fade automation are not included yet.
