@@ -481,31 +481,29 @@ class EditorActivity : AppCompatActivity() {
                 EditedMediaItemSequence.withAudioAndVideoFrom(videoItems)
             )
 
+            
             musicUri?.let { uri ->
                 val musicItem = EditedMediaItem.Builder(
                     MediaItem.fromUri(uri)
-            ).build()
-
-            val musicSequence = EditedMediaItemSequence
-                .withAudioFrom(listOf(musicItem))
-                .buildUpon()
-                .setIsLooping(true)
-                .build()
-
-            sequences.add(musicSequence)
+                ).build()
+            
+                sequences.add(
+                    EditedMediaItemSequence(listOf(musicItem), true)
+                )
             }
 
+
+            
             voiceOverUri?.let { uri ->
                 val voiceItem = EditedMediaItem.Builder(
                     MediaItem.fromUri(uri)
                 ).build()
-
-                val voiceSequence = EditedMediaItemSequence
-                    .withAudioFrom(listOf(voiceItem))
-                    .build()
-
-                sequences.add(voiceSequence)
+            
+                sequences.add(
+                    EditedMediaItemSequence(listOf(voiceItem))
+                )
             }
+
 
             val composition = Composition.Builder(sequences).build()
             val outputDir = getExternalFilesDir(Environment.DIRECTORY_MOVIES) ?: filesDir
