@@ -482,18 +482,29 @@ class EditorActivity : AppCompatActivity() {
             )
 
             musicUri?.let { uri ->
-                val musicItem = EditedMediaItem.Builder(MediaItem.fromUri(uri)).build()
-                sequences.add(
-                    EditedMediaItemSequence.withAudioFrom(listOf(musicItem))
-                        .buildUpon()
-                        .setIsLooping(true)
-                        .build()
-                )
+                val musicItem = EditedMediaItem.Builder(
+                    MediaItem.fromUri(uri)
+            ).build()
+
+            val musicSequence = EditedMediaItemSequence
+                .withAudioFrom(listOf(musicItem))
+                .buildUpon()
+                .setIsLooping(true)
+                .build()
+
+            sequences.add(musicSequence)
             }
 
             voiceOverUri?.let { uri ->
-                val voiceItem = EditedMediaItem.Builder(MediaItem.fromUri(uri)).build()
-                sequences.add(EditedMediaItemSequence.withAudioFrom(listOf(voiceItem)))
+                val voiceItem = EditedMediaItem.Builder(
+                    MediaItem.fromUri(uri)
+                ).build()
+
+                val voiceSequence = EditedMediaItemSequence
+                    .withAudioFrom(listOf(voiceItem))
+                    .build()
+
+                sequences.add(voiceSequence)
             }
 
             val composition = Composition.Builder(sequences).build()
